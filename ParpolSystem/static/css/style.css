@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Monserrat', sans-serif;
+}
+
+body{
+    background-color: #c9d6ff;
+    background: linear-gradient(90deg, rgba(16,0,36,1) 0%, rgba(117,55,189,1) 30%, rgba(255,255,255,1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+    border: none;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+.container span{
+    font-size: 12px;
+}
+
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.container button{
+    background-color: #512da8;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+}
+
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1; 
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons{
+    margin: 20px 0;
+}
+
+.social-icons a{
+    border: 1px solid#ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.toggle-container{
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 10000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle{
+    border: none;
+    background-color: #512da8;
+    height: 100%;
+    background: linear-gradient(to right, #6e5cc0, #3e2183);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right{
+    transform: translateX(-200%);
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: white;
+}
+
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-container {
+    max-width: 900px; /* Aumentar el ancho del contenedor */
+    margin: 0 auto;
+    background-color: #4B0082; /* Morado oscuro */
+    border-radius: 15px;
+    padding: 40px; /* Aumentar el padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px; /* Aumentar tamaño de imagen */
+    height: 150px; /* Aumentar tamaño de imagen */
+    margin-right: 50px; /* Aumentar separación de la imagen */
+}
+
+.upload-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px; /* Espacio entre imagen y botones */
+}
+
+.upload-buttons input[type="file"] {
+    display: none; /* Ocultar el input de archivo */
+}
+
+.button-style {
+    background-color: #7B68EE; /* Morado medio */
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    margin: 5px 0; /* Margen entre botones */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-style:hover {
+    background-color: #A020F0; /* Morado claro al pasar el ratón */
+}
+
+.accordion {
+    font-weight: bold;
+    background-color: #7B68EE; /* Morado medio */
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.accordion:hover {
+    background-color: #A020F0; /* Morado claro */
+    color: #fff; /* Letra blanca al pasar el ratón */
+}
+
+.panel {
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #8A2BE2; /* Morado de panel */
+    display: none;
+    overflow: hidden;
+    border: 1px solid #8A2BE2; /* Morado de borde */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.panel p {
+    margin: 10px 0;
+}
+
+.edit-form {
+    margin-top: 10px;
+}
+
+.edit-form input {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    width: calc(100% - 16px);
+}
+
+.account-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.logout-button,
+.delete-account-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.logout-button {
+    background-color: #6A5ACD; /* Morado más claro */
+}
+
+.delete-account-button {
+    background-color: red; /* Rojo */
+}
+
+.logout-button:hover {
+    background-color: #A020F0; /* Morado claro al pasar el ratón */
+}
+
+.delete-account-button:hover {
+    background-color: #ff7f7f; /* Fondo más claro al pasar el ratón */
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos del encabezado */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center;
+    padding: 20px;
+    background-color: #A020F0; /* Fondo morado */
+}
+
+/* Alineación de la logo */
+.navbar .logo {
+    margin-right: auto; /* Empuja el logo hacia la izquierda */
+}
+
+.navbar .logo a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* Estilos para centrar los enlaces */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centrar los enlaces */
+    flex: 1; /* Permite que la lista tome el espacio disponible */
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar padding */
+}
+
+.navbar ul li {
+    margin: 0 15px; /* Espacio entre los enlaces */
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Alineación del botón de login */
+.action_btn {
+    margin-left: auto; /* Empuja el botón de login hacia la derecha */
+    background-color: #6A5ACD;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Sección "Sobre Nosotros" */
+.about_section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #6A5ACD; /* Fondo morado oscuro */
+    color: white; /* Texto blanco */
+}
+
+.about_section h2 {
+    font-size: 36px; /* Tamaño del encabezado */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+.about_section p {
+    font-size: 18px; /* Tamaño del párrafo */
+    margin: 0; /* Sin margen */
+}
+
+/* Sección "Why Choose Us" */
+.choose-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+.choose-section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333; /* Color del texto */
+}
+
+.choose-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.text-content {
+    flex: 1;
+    margin-right: 20px; /* Espacio entre texto e imagen */
+}
+
+.text-content h3 {
+    font-size: 28px; /* Tamaño del subtítulo */
+    margin-bottom: 20px;
+}
+
+.text-content ul {
+    list-style: disc;
+    margin-left: 20px; /* Margen izquierdo */
+}
+
+.text-content ul li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    font-size: 18px; /* Tamaño de la lista */
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.choose-image {
+    max-width: 100%; /* Imagen responsiva */
+    height: auto; /* Mantener la proporción */
+}
+
+/* Footer */
+footer {
+    background-color: #6A5ACD; /* Fondo morado oscuro */
+    color: white; /* Texto blanco */
+    text-align: center;
+    padding: 10px 0;
+}

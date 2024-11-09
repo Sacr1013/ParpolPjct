@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<main class="main-content">
+    <div class="head-title">
+        <div class="left">
+            <h1>Registro de Envíos</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Panel</a></li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li><a class="active" href="#">Envíos</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-container">
+        <select class="filter-select" id="timePeriodSelect">
+            <option value="day">Último Día</option>
+            <option value="week">Última Semana</option>
+            <option value="month">Último Mes</option>
+        </select>
+        <button class="filter-btn">Aplicar Filtros</button>
+        <button class="btn-registro" id="btnNuevoEnvio">Registrar Nuevo Envío</button>
+        
+    </div>
+   
+    <!-- Listado de Envíos -->
+    <div class="sendings-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Factura</th>
+                    <th>Destinatario</th>
+                    <th>Medio de Envío</th>
+                    <th>Destino</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ejemplo de fila -->
+                <tr>
+                    <td>2024-11-07</td>
+                    <td><a href="#">#12345</a></td>
+                    <td>Juan Pérez</td>
+                    <td>Mensajería Express</td>
+                    <td>Ciudad de México</td>
+                    <td>Entregado</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Generador de Guía de Envío -->
+    <div class="guide-form">
+        <h2>Generar Guía</h2>
+        <form>
+            <input type="text" placeholder="Nombre del destinatario" required>
+            <input type="text" placeholder="Dirección del destinatario" required>
+            <input type="text" placeholder="Teléfono del destinatario" required>
+            <input type="text" placeholder="Descripción del paquete" required>
+            <input type="number" placeholder="Factura asociada" required>
+            <select>
+                <option>Correo Estándar</option>
+                <option>Mensajería Express</option>
+            </select>
+            <input type="number" placeholder="Peso (kg)" required>
+            <input type="number" placeholder="Dimensiones (cm)" required>
+            <button type="submit">Generar Guía</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Mis Productos</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Panel</a></li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li><a class="active" href="#">Mis Productos</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="products-actions">
+        <div class="left-actions">
+            <div class="filter-button">
+                <button class="btn-filter">Ver todas las categorías<i class='bx bx-chevron-down'></i></button>
+                <button class="btn-filter">Ordenar: Productos más vendidos<i class='bx bx-chevron-down'></i></button>
+            </div>
+        </div>
+        <div class="right-actions">
+            <button class="btn-secondary"><i class='bx bx-category'></i>Categorías</button>
+            <div class="dropdown">
+                <button class="btn-primary dropbtn">
+                    <i class='bx bx-plus'></i>Agregar productos
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" id="add-manually">Manualmente</a>
+                    <a href="#">Subir desde Excel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-container">
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Buscar producto..." class="search-input">
+    </div>
+    <div class="empty-state" id="empty-state">
+        <i class='bx bx-package icon'></i>
+        <h3>No tienes productos en tu inventario</h3>
+        <p>Comienza agregando productos manualmente o importándolos desde Excel</p>
+        <div class="empty-state-actions">
+            <button class="btn-secondary" id="add-manually-empty">Agregar manualmente</button>
+            <button class="btn-primary">Subir productos desde Excel</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="form-container" id="product-form">
+        <div class="form-content"></div>
+            <h2 id="form-title">Agregar producto</h2>
+            <div class="border-dashed border-2 border-gray-300 p-4 rounded-md mb-4 text-center">
+                <i class="fas fa-upload text-2xl text-gray-500"></i>
+                <p class="text-sm text-gray-500">Cargar imagen</p>
+                <input type="file" id="product-image" accept="image/*">
+                <button id="remove-image-btn" class="hidden" onclick="removeImage()">Quitar imagen</button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Nombre del producto*</label>
+                <input id="product-name" placeholder="Escribe el nombre del producto" type="text">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Código de barras</label>
+                <div class="flex items-center">
+                    <input id="product-barcode" placeholder="Escríbelo o escanéalo" type="text"/>
+                    <i class="fas fa-barcode text-gray-500 ml-2"></i>
+                </div>
+            </div>
+            <div class="mb-4">
+                <input class="mr-2" type="checkbox"/>
+                <label class="text-sm text-gray-700">Agregar unidades de medida a este producto (Kilos, gramos, litros, etc)</label>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Cantidad disponible*</label>
+                <div class="flex items-center">
+                    <button class="p-2 border border-gray-300 rounded-md" onclick="decrementQuantity()">-</button>
+                    <input class="w-full p-2 border border-gray-300 rounded-md text-center mx-2" id="product-quantity" type="text" value="0"/>
+                    <button class="p-2 border border-gray-300 rounded-md" onclick="incrementQuantity()">+</button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Costo unitario</label>
+                <input id="product-cost" placeholder="$ 0" type="text"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Precio*</label>
+                <input id="product-price" placeholder="$ 0" type="text"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Categoría</label>
+                <select id="product-category">
+                    <option>Selecciona una categoría</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Descripción</label>
+                <textarea id="product-description" placeholder="Agrega una descripción"></textarea>
+            </div>
+            <button id="form-submit" onclick="addProduct()">Crear producto</button>
+            <button class="delete-btn hidden" id="delete-btn" onclick="deleteProduct()">Eliminar producto</button>
+    </div>
+
+    <!-- Lista de productos, visible si hay productos añadidos -->
+    <div class="product-list" id="product-list" style="display: block; overflow-y: auto; max-height: 500px;">
+        <!-- Los productos se agregarán aquí dinámicamente -->
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/misproductos.js' %}"></script>
+<script>
+    console.log("Página Mis Productos cargada.");
+</script>
+{% endblock %}

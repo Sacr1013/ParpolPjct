@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleprofile.css' %}">
+    <title>Parpol - Dashboard</title>
+</head>
+<body>
+    <section id="sidebar">
+        <!-- Sidebar con data-page para cada sección -->
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Parpol</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="{% url 'movimientos' %}">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Movimientos</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'misproductos' %}">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Mis Productos</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'estadisticas' %}">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">Estadísticas</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'empleados' %}">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Empleados</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'clientes' %}">
+                    <i class='bx bxs-user'></i>
+                    <span class="text">Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'proveedores' %}">
+                    <i class='bx bxs-factory'></i>
+                    <span class="text">Proveedores</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'envios' %}">
+                    <i class='bx bxs-truck'></i>
+                    <span class="text">Envíos</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'configuracion' %}">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Configuración</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="side-menu">
+            <li>
+                <a href="login.html" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Salir</span>
+                </a>
+            </li>
+            
+        </ul>
+    </section>
+
+    <section id="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categorías</a>
+            <div class="nav-right">
+                <input type="checkbox" id="switch-mode" hidden>
+                <label for="switch-mode" class="switch-mode"></label>
+                <a href="#" class="notification">
+                    <i class='bx bx-bell'></i>
+                    <span class="num">8</span>
+                </a>
+                <a href="#" class="profile">
+                    <img src="{% static 'images/profile.png' %}">
+                </a>
+            </div>
+        </nav>
+
+        <!-- Contenedor dinámico para cargar las páginas de contenido <img src="images/profile.png">-->
+        <main id="main-content">
+            <!-- Este será el área donde se cargarán las páginas de contenido -->
+            {% block title %}
+
+            {% endblock %}
+        </main>
+    </section>
+   
+    <script src="{% static 'js/scriptprofile.js' %}"></script>
+    {% block extra_js %}
+    <!-- Aquí se incluirán los scripts específicos de cada página -->
+    {% endblock %}
+</body>
+</html>

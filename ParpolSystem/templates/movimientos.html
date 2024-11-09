@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<main>
+    <!-- Breadcrumb original -->
+    <div class="head-title">
+        <div class="left">
+            <h1>Movimientos</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Panel</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Movimientos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenido del nuevo diseño de Movimientos -->
+    <div class="container">
+        
+            <div class="buttons">
+                <button class="open-cash">Abrir caja</button>
+                <button class="new-sale">Nueva venta</i></button>
+                <button class="new-expense">Nuevo gasto</button>
+            </div>
+        </div>
+
+        <!-- Tabs de navegación -->
+        <div class="nav-tabs">
+            <div class="active" onclick="changeTab(this, 'transactions')">Transacciones</div>
+            <div onclick="changeTab(this, 'cash-closures')">Cierres de caja</div>
+        </div>
+
+        <!-- Contenido de Transacciones -->
+        <div id="transactions" class="content active">
+            <div class="filters">
+                <button>Filtrar</button>
+                <select>
+                    <option>Semanal</option>
+                </select>
+                <input type="text" placeholder="4 nov | 10 nov">
+                <input type="text" placeholder="Buscar concepto...">
+                <div class="report">
+                    <i class="fas fa-download"></i> Descargar reporte
+                </div>
+            </div>
+            <div class="summary">
+                <div class="card balance">
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Balance</h3>
+                        <p>$ 0</p>
+                    </div>
+                </div>
+                <div class="card sales">
+                    <div class="icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Ventas totales</h3>
+                        <p>$ 0</p>
+                    </div>
+                </div>
+                <div class="card expenses">
+                    <div class="icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Gastos totales</h3>
+                        <p>$ 0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-tabs -->
+            <div class="tabs">
+                <div class="active" onclick="changeSubTab(this)">Ingresos</div>
+                <div onclick="changeSubTab(this)">Egresos</div>
+                <div onclick="changeSubTab(this)">Por cobrar</div>
+                <div onclick="changeSubTab(this)">Por pagar</div>
+            </div>
+
+            <!-- No records section -->
+            <div class="no-records">
+                <div class="icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <p>Aún no tienes registros creados en esta fecha.</p>
+                <p>Empieza agregando uno con las acciones de <a href="#">“Nueva venta”</a> y <a href="#">“Nuevo gasto”</a></p>
+            </div>
+        </div>
+
+        <!-- Contenido de Cierres de Caja -->
+        <div id="cash-closures" class="content">
+            <div class="filters">
+                <button>Filtrar</button>
+                <select>
+                    <option>Semanal</option>
+                    <option>Mensual</option>
+                </select>
+                <input type="text" placeholder="Seleccionar rango de fechas">
+                <input type="text" placeholder="Buscar concepto...">
+                <div class="report">
+                    <i class="fas fa-download"></i> Descargar reporte
+                </div>
+            </div>
+            <div class="no-records">
+                <div class="icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <p>Aún no tienes registros creados en esta fecha.</p>
+                <p>Empieza agregando uno con las acciones de <a href="#">“Nueva venta”</a> y <a href="#">“Nuevo gasto”</a></p>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+{% endblock %}

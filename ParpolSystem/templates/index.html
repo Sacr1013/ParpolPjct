@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ndex.css' %}">
+    <title>Parpol</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Parpol</a></div>
+            <ul class="links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>          
+            </ul>
+            <a href="{% url 'login' %}" class="action_btn">Acceder</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#about">Sobre Nosotros</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#contact">Contacto</a></li>
+            <li><a href="{% url 'login' %}" class="action_btn">Acceder</a></li>
+        </div>
+    </header>
+
+    <main>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/carousel-1.jpg' %}" class="d-block w-100" alt="Dashboard de Control" loading="lazy">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Control Total de Inventario</h5>
+                        <p>Gestiona tu inventario en tiempo real con actualizaciones automáticas</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/carousel-2.jpg' %}" class="d-block w-100" alt="Sistema de Ventas" loading="lazy">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Sistema de Punto de Venta</h5>
+                        <p>Gestiona tus ventas de manera eficiente y organizada</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/carousel-3.jpg' %}" class="d-block w-100" alt="Reportes y Análisis" loading="lazy">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Reportes Detallados</h5>
+                        <p>Toma decisiones informadas con nuestro sistema de análisis</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <section id="hero" class="hero">
+            <h1>Bienvenido a Parpol</h1>
+            <p>Gestión eficiente de ventas e inventario al alcance de tu mano</p>
+        </section>
+        
+        <a href="#services" class="cta_btn">Nuestros Servicios</a>
+
+        <section id="about" class="about_section">
+            <h2>Sobre Nosotros</h2>
+            <p>Fundada en 2010, Parpol Tech Solutions ha sido pionera en la transformación digital de pequeñas y medianas empresas en Colombia. Desde nuestros inicios, hemos dedicado nuestros esfuerzos a desarrollar herramientas que faciliten la gestión de ventas e inventario, permitiendo que nuestros clientes se enfoquen en lo que realmente importa: hacer crecer su negocio.</p>
+           </section>
+
+        <section class="features_section">
+            <h2>¿Por qué elegir Parpol?</h2>
+            <div class="features_container">
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Reportes en Tiempo Real</h3>
+                    <p>Visualiza el rendimiento de tu negocio al instante desde cualquier navegador web.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Acceso Web Universal</h3>
+                    <p>Accede a tu sistema desde cualquier computadora con conexión a internet, sin necesidad de instalaciones.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock"></i>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Tus datos siempre protegidos y respaldados en nuestros servidores seguros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services_section">
+            <h2>Nuestros Servicios</h2>
+            <p>En Parpol, ofrecemos soluciones integrales para la gestión de ventas, inventario y análisis de datos, diseñadas para optimizar la eficiencia de tu negocio.</p>
+            <div class="features_container">
+                <div class="feature">
+                    <i class="fas fa-chart-line fa-3x"></i>
+                    <h3>Gestión de Inventario</h3>
+                    <p>Controla y monitorea tu inventario en tiempo real. Simplificamos la administración para que puedas centrarte en tu negocio.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cash-register fa-3x"></i>
+                    <h3>Punto de Venta (POS)</h3>
+                    <p>Optimiza tus ventas con nuestro sistema de punto de venta, rápido, confiable y fácil de usar en cualquier dispositivo.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-file-alt fa-3x"></i>
+                    <h3>Reportes Personalizados</h3>
+                    <p>Genera reportes detallados sobre ventas, inventario y rendimiento, ayudándote a tomar decisiones informadas y estratégicas.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock fa-3x"></i>
+                    <h3>Seguridad de Datos</h3>
+                    <p>Protege la información de tu empresa con nuestras avanzadas medidas de seguridad y respaldo de datos en la nube.</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="testimonials_section">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonials_container">
+                <div class="testimonial">
+                    <img src= "{% static 'images/testimonial-1.jpg' %}" alt="Cliente 1" class="testimonial_img">
+                    <p>"Parpol ha revolucionado la forma en que manejamos nuestro inventario."</p>
+                    <h4>María González</h4>
+                    <span>Propietaria de Tienda</span>
+                </div>
+                <div class="testimonial">
+                    <img src="{% static 'images/testimonial-2.jpg' %}" alt="Cliente 2" class="testimonial_img">
+                    <p>"La mejor inversión que hemos hecho para nuestro negocio."</p>
+                    <h4>Carlos Rodríguez</h4>
+                    <span>Gerente de Operaciones</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact_section">
+            <!-- Información de la Empresa -->
+            <div class="company_info">
+                <h3>Información de la Empresa</h3>
+                <p><strong>Nombre:</strong> Parpol Tech Solutions</p>
+                <p><strong>Dirección:</strong> Calle 43 #12-63, Medellin, Colombia</p>
+                <p><strong>Teléfono:</strong> +57 3225251752</p>
+                <p><strong>Email:</strong> contacto@parpoltech.com</p>
+                <p><strong>Horario de Atención:</strong> Lunes a Viernes de 9:00 AM a 6:00 PM</p>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <form action="#" method="post" class="contact_form">
+                
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="action_btn">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer_container">
+            <div class="footer_links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer_social">
+                <h4>Síguenos</h4>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <div class="footer_contact">
+                <h4>Contáctanos</h4>
+                <p>Teléfono: 123-456-7890</p>
+                <p>Email: info@parpol.com</p>
+            </div>
+        </div>
+        <p>&copy; 2024 Parpol. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+    <script>
+        const toggleBtn= document.querySelector('.toggle_btn')
+        const toggleBtnIcon= document.querySelector('.toggle_btn i')
+        const dropDownMenu= document.querySelector('.dropdown_menu')
+        toggleBtn.onclick= function(){
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+            ? 'fa-solid fa-xmark'
+            : 'fa-solid fa-bars'
+        }
+    </script>
+</body>
+</html>
+

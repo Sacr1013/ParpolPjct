@@ -1,0 +1,161 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<main class="clientes-dashboard">
+    <div class="head-title">
+        <div class="left">
+            <h1>Clientes</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Panel</a></li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li><a class="active" href="#">Clientes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Registro de Clientes</h1>
+        <div class="flex space-x-4">
+            <div class="space-x-4">
+                <select id="searchType" class="border rounded px-4 py-2">
+                    <option value="codigo">Buscar por código</option>
+                    <option value="nombre">Buscar por nombre</option>
+                    <option value="cedula">Buscar por cédula</option>
+                    <option value="telefono">Buscar por número</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Buscar" class="border rounded px-4 py-2">
+                <button onclick="searchClient()" class="bg-purple-500 text-white px-4 py-2 rounded">Buscar</button>
+                <select id="filterCountry" class="border rounded px-4 py-2">
+                    <option value="">Filtrar por país</option>
+                    <option value="País 1">País 1</option>
+                    <option value="País 2">País 2</option>
+                </select>
+                <select id="filterCity" class="border rounded px-4 py-2">
+                    <option value="">Filtrar por ciudad</option>
+                    <option value="Ciudad 1">Ciudad 1</option>
+                    <option value="Ciudad 2">Ciudad 2</option>
+                </select>
+            </div>
+            <button id="newClientBtn" class="bg-purple-500 text-white px-4 py-2 rounded">Registrar Nuevo Cliente</button>
+        </div>
+        <table class="min-w-full bg-white border mb-4">
+            <thead>
+                <tr class="bg-purple-900 text-white">
+                    <th class="py-2 px-4 border-b">Código</th>
+                    <th class="py-2 px-4 border-b">Nombre Completo</th>
+                    <th class="py-2 px-4 border-b">Cédula</th>
+                    <th class="py-2 px-4 border-b">Número de Teléfono</th>
+                    <th class="py-2 px-4 border-b">País</th>
+                    <th class="py-2 px-4 border-b">Ciudad</th>
+                    <th class="py-2 px-4 border-b">Fecha de Compra</th>
+                    <th class="py-2 px-4 border-b">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="clientTableBody">
+                <tr>
+                    <td class="py-2 px-4 border-b">001</td>
+                    <td class="py-2 px-4 border-b">Juan Pérez</td>
+                    <td class="py-2 px-4 border-b">123456789</td>
+                    <td class="py-2 px-4 border-b">555-1234</td>
+                    <td class="py-2 px-4 border-b">País 1</td>
+                    <td class="py-2 px-4 border-b">Ciudad 1</td>
+                    <td class="py-2 px-4 border-b">2024-10-25</td>
+                    <td class="py-2 px-4 border-b text-purple-500 cursor-pointer" onclick="editClient('${client.codigo}')">Editar</td>
+                    <td class="py-2 px-4 border-b text-purple-500 cursor-pointer" onclick="showHistory('${client.codigo}')">Ver Historial</td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div id="newClientForm" class="hidden fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg p-8">
+            <h2 class="text-2xl font-bold mb-4">Registrar Nuevo Cliente</h2>
+            <form id="addClientForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Nombre Completo</label>
+                    <input type="text" id="newClientName" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Cédula</label>
+                    <input type="text" id="newClientCedula" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Número de Teléfono</label>
+                    <input type="text" id="newClientPhone" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">País</label>
+                    <input type="text" id="newClientCountry" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Ciudad</label>
+                    <input type="text" id="newClientCity" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2" onclick="closeForm('newClientForm')">Cancelar</button>
+                    <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded">Guardar</button>
+                </div>
+            </form>
+        </div>
+        <div id="editClientForm" class="hidden fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg p-8">
+            <h2 class="text-2xl font-bold mb-4">Editar Cliente</h2>
+            <form id="updateClientForm">
+                <input type="hidden" id="editClientId">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Nombre Completo</label>
+                    <input type="text" id="editClientName" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Cédula</label>
+                    <input type="text" id="editClientCedula" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Número de Teléfono</label>
+                    <input type="text" id="editClientPhone" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">País</label>
+                    <input type="text" id="editClientCountry" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Ciudad</label>
+                    <input type="text" id="editClientCity" class="border rounded w-full px-4 py-2" required>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded mr-2" onclick="closeForm('editClientForm')">Cancelar</button>
+                    <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded">Guardar</button>
+                </div>
+            </form>
+        </div>
+        <div id="clientHistory" class="hidden fixed top-0 left-0 w-2/3 h-full bg-white shadow-lg p-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Historial de Compras</h2>
+                <button class="text-gray-500" onclick="closeHistory()"><i class="fas fa-times"></i></button>
+            </div>
+            <table class="min-w-full bg-white border">
+                <thead>
+                    <tr class="bg-purple-900 text-white">
+                        <th class="py-2 px-4 border-b">Fecha</th>
+                        <th class="py-2 px-4 border-b">Producto</th>
+                        <th class="py-2 px-4 border-b">Cantidad</th>
+                        <th class="py-2 px-4 border-b">Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                    <tr>
+                        <td class="py-2 px-4 border-b">2024-10-25</td>
+                        <td class="py-2 px-4 border-b">Producto A</td>
+                        <td class="py-2 px-4 border-b">2</td>
+                        <td class="py-2 px-4 border-b">$50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% block extra_js %}
+<script src="{% static 'js/clientes.js' %}"></script>
+<script>
+    console.log("Página clientes cargada.");
+</script>
+{% endblock %}
+{% endblock %}

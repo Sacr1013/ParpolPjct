@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Movimientos</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Panel</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Movimientos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stats-overview">
+        <div class="stat-card1">
+            <i class="bx bxs-calendar-check icon"></i>
+            <div class="stat-content">
+                <h3>$0</h3>
+                <p>Balance Actual</p>
+            </div>
+        </div>
+        <div class="stat-card2">
+            <i class="bx bxs-dollar-circle icon"></i>
+            <div class="stat-content">
+                <h3>$2834</h3>
+                <p>Ventas Totales</p>
+            </div>
+        </div>
+        <div class="stat-card3">
+            <i class="bx bxs-dollar-circle icon"></i>
+            <div class="stat-content">
+                <h3>$2834</h3>
+				<p>Gastos Totales</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="transactions">
+        <h2>Transacciones Recientes</h2>
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2024-11-01</td>
+                    <td>Compra</td>
+                    <td>$500</td>
+                    <td><span class="status completed">Completado</span></td>
+                </tr>
+                <tr>
+                    <td>2024-11-02</td>
+                    <td>Venta</td>
+                    <td>$320</td>
+                    <td><span class="status pending">Pendiente</span></td>
+                </tr>
+                <tr>
+                    <td>2024-11-03</td>
+                    <td>Devolución</td>
+                    <td>$150</td>
+                    <td><span class="status cancelled">Cancelado</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+{% endblock %}

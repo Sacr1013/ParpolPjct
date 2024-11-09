@@ -1,0 +1,28 @@
+# Archivos de base de datos
+db.sqlite3
+
+# Archivos de configuración local de Python
+*.pyc
+*.pyo
+*.pyd
+
+# Carpeta de __pycache__
+__pycache__
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración de IDE (si los tienes)
+.vscode/
+.idea/
+
+# Archivos de entorno virtual (si usas uno)
+venv/
+.venv/
+env/
+.env/
+
+# Archivos temporales
+*.swp
+*~
+.DS_Store

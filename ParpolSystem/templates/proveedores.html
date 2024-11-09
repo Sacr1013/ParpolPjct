@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<main class="proveedores-dashboard">
+    <div class="head-title">
+        <div class="left">
+            <h1>Proveedores</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Panel</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Proveedores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Botón para registrar nuevo proveedor -->
+    <button class="btn-registro" id="btnNuevoProveedor">Registrar Nuevo Proveedor</button>
+
+    <!-- Listado de Proveedores -->
+    <div class="proveedores-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Producto</th>
+                    <th>Deuda</th>
+                    <th>Última Compra</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Proveedor A</td>
+                    <td>Electrónica</td>
+                    <td>$500</td>
+                    <td>2024-10-30</td>
+                    <td><a href="#">Ver</a></td>
+                </tr>
+                <!-- Más filas -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulario emergente para nuevo proveedor -->
+    <div id="formNuevoProveedor" class="form-modal">
+        <div class="modal-content">
+            <h2>Nuevo Proveedor</h2>
+            <form>
+                <input type="text" placeholder="Nombre del Proveedor" required>
+                <input type="text" placeholder="Producto Suministrado" required>
+                <input type="text" placeholder="Deuda Pendiente" required>
+                <input type="text" placeholder="Última Compra" required>
+                <button type="submit">Registrar Proveedor</button>
+                <button type="button" id="cerrarFormProveedor">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
